@@ -36,5 +36,16 @@ namespace Casgem_MediatorDesignPattern.Controllers
             await _mediator.Send(new RemoveProductCommand(id));
             return RedirectToAction("Index");
         }
+        [HttpGet]
+        public async Task<IActionResult> UpdateProduct(int id)
+        {
+            var value=await _mediator.Send(new GetProductUpdateByIDQuery(id));
+            return View(value);
+        }
+        [HttpPost]
+        //public async Task<IActionResult> UpdateProduct()
+        //{
+        //    return View();
+        //}
     }
 }
